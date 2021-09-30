@@ -79,7 +79,7 @@ nextBtn.addEventListener("click", ()=>{
   nextMusic();
 });
 
-// update progress bar width according to music current time
+// update current time
 mainAudio.addEventListener("timeupdate", (e)=>{
   const currentTime = e.target.currentTime; //getting playing song currentTime
   const duration = e.target.duration; //getting playing song total duration
@@ -107,7 +107,7 @@ mainAudio.addEventListener("timeupdate", (e)=>{
   musicCurrentTime.innerText = `${currentMin}:${currentSec}`;
 });
 
-// update playing song currentTime on according to the progress bar width
+// update progress bar width
 progressArea.addEventListener("click", (e)=>{
   let progressWidth = progressArea.clientWidth; //getting width of progress bar
   let clickedOffsetX = e.offsetX; //getting offset x value
@@ -118,7 +118,7 @@ progressArea.addEventListener("click", (e)=>{
   playingSong();
 });
 
-//change loop, shuffle, repeat icon onclick
+//changes onclick
 const repeatBtn = wrapper.querySelector("#repeat-plist");
 repeatBtn.addEventListener("click", ()=>{
   let getText = repeatBtn.innerText; //getting this tag innerText
@@ -138,7 +138,7 @@ repeatBtn.addEventListener("click", ()=>{
   }
 });
 
-//code for what to do after song ended
+// song ended
 mainAudio.addEventListener("ended", ()=>{
   // we'll do according to the icon means if user has set icon to
   // loop song then we'll repeat the current song and will do accordingly
@@ -165,7 +165,7 @@ mainAudio.addEventListener("ended", ()=>{
   }
 });
 
-//show music list onclick of music icon
+//music list
 moreMusicBtn.addEventListener("click", ()=>{
   musicList.classList.toggle("show");
 });
