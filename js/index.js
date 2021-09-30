@@ -219,7 +219,7 @@ function playingSong(){
 
 function clicked(element){
   let getLiIndex = element.getAttribute("li-index");
-  musicIndex = getLiIndex; //updating current song index with clicked li index
+  musicIndex = getLiIndex; 
   loadMusic(musicIndex);
   playMusic();
   playingSong();
