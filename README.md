@@ -33,6 +33,10 @@ https://jolly-euler-fda193.netlify.app/
 
 To deploy this project run, I have used https://www.netlify.com/
 
+## Optimizations
+
+ IN Future, I will work more on user Interface. So that the project will look more attaractive.
+
 
 ## License
 
@@ -42,11 +46,12 @@ To deploy this project run, I have used https://www.netlify.com/
 ## Feedbacks
   --> If you have any feedback or any suggestion regarding this project , please reach  out to me at mansitagadiya24@gmail.com
   
-## Optimizations
 
-IN Future, I will work more on user Interface. So that the project will look more attaractive.
+## Special Thanks
 
-
+ - [Newton School](https://www.newtonschool.co/)
+ 
+  
 ## Acknowledgements
 
  - [Ankeet Kumar Hanny](https://www.linkedin.com/in/ankeethanny007)
