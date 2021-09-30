@@ -79,8 +79,8 @@ nextBtn.addEventListener("click", ()=>{
 
 // update current time
 mainAudio.addEventListener("timeupdate", (e)=>{
-  const currentTime = e.target.currentTime; //getting playing song currentTime
-  const duration = e.target.duration; //getting playing song total duration
+  const currentTime = e.target.currentTime;
+  const duration = e.target.duration; 
   let progressWidth = (currentTime / duration) * 100;
   progressBar.style.width = `${progressWidth}%`;
 
@@ -106,9 +106,9 @@ mainAudio.addEventListener("timeupdate", (e)=>{
 
 // update progress bar width
 progressArea.addEventListener("click", (e)=>{
-  let progressWidth = progressArea.clientWidth; //getting width of progress bar
-  let clickedOffsetX = e.offsetX; //getting offset x value
-  let songDuration = mainAudio.duration; //getting song total duration
+  let progressWidth = progressArea.clientWidth;
+  let clickedOffsetX = e.offsetX; 
+  let songDuration = mainAudio.duration;
   
   mainAudio.currentTime = (clickedOffsetX / progressWidth) * songDuration;
   playMusic(); //calling playMusic function
@@ -118,7 +118,7 @@ progressArea.addEventListener("click", (e)=>{
 //changes onclick
 const repeatBtn = wrapper.querySelector("#repeat-plist");
 repeatBtn.addEventListener("click", ()=>{
-  let getText = repeatBtn.innerText; //getting this tag innerText
+  let getText = repeatBtn.innerText; 
   switch(getText){
     case "repeat":
       repeatBtn.innerText = "repeat_one";
