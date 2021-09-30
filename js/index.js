@@ -43,8 +43,7 @@ function pauseMusic(){
 
 //prev music function
 function prevMusic(){
-  musicIndex--; //decrement of musicIndex by 1
-  //if musicIndex is less than 1 then musicIndex will be the array length so the last music play
+  musicIndex--; 
   musicIndex < 1 ? musicIndex = allMusic.length : musicIndex = musicIndex;
   loadMusic(musicIndex);
   playMusic();
@@ -53,8 +52,7 @@ function prevMusic(){
 
 //next music function
 function nextMusic(){
-  musicIndex++; //increment of musicIndex by 1
-  //if musicIndex is greater than array length then musicIndex will be 1 so the first music play
+  musicIndex++;
   musicIndex > allMusic.length ? musicIndex = 1 : musicIndex = musicIndex;
   loadMusic(musicIndex);
   playMusic();
@@ -89,7 +87,6 @@ mainAudio.addEventListener("timeupdate", (e)=>{
   let musicCurrentTime = wrapper.querySelector(".current-time"),
   musicDuartion = wrapper.querySelector(".max-duration");
   mainAudio.addEventListener("loadeddata", ()=>{
-    // update song total duration
     let mainAdDuration = mainAudio.duration;
     let totalMin = Math.floor(mainAdDuration / 60);
     let totalSec = Math.floor(mainAdDuration % 60);
@@ -101,7 +98,7 @@ mainAudio.addEventListener("timeupdate", (e)=>{
   // update playing song current time
   let currentMin = Math.floor(currentTime / 60);
   let currentSec = Math.floor(currentTime % 60);
-  if(currentSec < 10){ //if sec is less than 10 then add 0 before it
+  if(currentSec < 10){ 
     currentSec = `0${currentSec}`;
   }
   musicCurrentTime.innerText = `${currentMin}:${currentSec}`;
@@ -138,26 +135,24 @@ repeatBtn.addEventListener("click", ()=>{
   }
 });
 
-// song ended
+// song end
 mainAudio.addEventListener("ended", ()=>{
-  // we'll do according to the icon means if user has set icon to
-  // loop song then we'll repeat the current song and will do accordingly
-  let getText = repeatBtn.innerText; //getting this tag innerText
+  let getText = repeatBtn.innerText; 
   switch(getText){
     case "repeat":
-      nextMusic(); //calling nextMusic function
+      nextMusic();
       break;
     case "repeat_one":
-      mainAudio.currentTime = 0; //setting audio current time to 0
-      loadMusic(musicIndex); //calling loadMusic function with argument, in the argument there is a index of current song
-      playMusic(); //calling playMusic function
+      mainAudio.currentTime = 0; 
+      loadMusic(musicIndex); 
+      playMusic(); 
       break;
     case "shuffle":
-      let randIndex = Math.floor((Math.random() * allMusic.length) + 1); //genereting random index/numb with max range of array length
+      let randIndex = Math.floor((Math.random() * allMusic.length) + 1); 
       do{
         randIndex = Math.floor((Math.random() * allMusic.length) + 1);
-      }while(musicIndex == randIndex); //this loop run until the next random number won't be the same of current musicIndex
-      musicIndex = randIndex; //passing randomIndex to musicIndex
+      }while(musicIndex == randIndex); 
+      musicIndex = randIndex;
       loadMusic(musicIndex);
       playMusic();
       playingSong();
@@ -174,7 +169,6 @@ closemoreMusic.addEventListener("click", ()=>{
 });
 
 const ulTag = wrapper.querySelector("ul");
-// let create li tags according to array length for list
 for (let i = 0; i < allMusic.length; i++) {
   //let's pass the song name, artist from the array
   let liTag = `<li li-index="${i + 1}">
@@ -185,23 +179,22 @@ for (let i = 0; i < allMusic.length; i++) {
                 <span id="${allMusic[i].src}" class="audio-duration">3:40</span>
                 <audio class="${allMusic[i].src}" src="songs/${allMusic[i].src}.mp3"></audio>
               </li>`;
-  ulTag.insertAdjacentHTML("beforeend", liTag); //inserting the li inside ul tag
-
+  ulTag.insertAdjacentHTML("beforeend", liTag); 
   let liAudioDuartionTag = ulTag.querySelector(`#${allMusic[i].src}`);
   let liAudioTag = ulTag.querySelector(`.${allMusic[i].src}`);
   liAudioTag.addEventListener("loadeddata", ()=>{
     let duration = liAudioTag.duration;
     let totalMin = Math.floor(duration / 60);
     let totalSec = Math.floor(duration % 60);
-    if(totalSec < 10){ //if sec is less than 10 then add 0 before it
+    if(totalSec < 10){ 
       totalSec = `0${totalSec}`;
     };
-    liAudioDuartionTag.innerText = `${totalMin}:${totalSec}`; //passing total duation of song
-    liAudioDuartionTag.setAttribute("t-duration", `${totalMin}:${totalSec}`); //adding t-duration attribute with total duration value
+    liAudioDuartionTag.innerText = `${totalMin}:${totalSec}`; 
+    liAudioDuartionTag.setAttribute("t-duration", `${totalMin}:${totalSec}`); 
   });
 }
 
-//play particular song from the list onclick of li tag
+//play song
 function playingSong(){
   const allLiTag = ulTag.querySelectorAll("li");
   
@@ -214,8 +207,7 @@ function playingSong(){
       audioTag.innerText = adDuration;
     }
 
-    //if the li tag index is equal to the musicIndex then add playing class in it
-    if(allLiTag[j].getAttribute("li-index") == musicIndex){
+     if(allLiTag[j].getAttribute("li-index") == musicIndex){
       allLiTag[j].classList.add("playing");
       audioTag.innerText = "Playing";
     }
@@ -224,7 +216,7 @@ function playingSong(){
   }
 }
 
-//particular li clicked function
+
 function clicked(element){
   let getLiIndex = element.getAttribute("li-index");
   musicIndex = getLiIndex; //updating current song index with clicked li index
