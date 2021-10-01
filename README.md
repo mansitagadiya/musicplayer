@@ -4,7 +4,7 @@
 # Mini Project - Music PLayer
 
 -->Hosted project link --> 
-https://jolly-euler-fda193.netlify.app/
+music-mansi-tagadiya.netlify.app
 
 ## Features
 - music collection
